@@ -9,7 +9,7 @@ DESCRIPTION="VMware kernel modules"
 HOMEPAGE="https://github.com/bytium/vm-host-modules"
 
 # Highest kernel version known to work (updated with patches):
-MY_KERNEL_VERSION="6.16"
+MY_KERNEL_VERSION="6.14"
 MY_COMMIT="7bab658ccb4ba783b984e800a30925eea46448ff"
 
 SRC_URI="https://github.com/bytium/vm-host-modules/archive/${MY_COMMIT}.tar.gz -> ${P}-${MY_COMMIT}.tar.gz"
@@ -56,11 +56,11 @@ pkg_setup() {
 
 src_prepare() {
 	# Apply kernel compatibility patches
-	eapply "${FILESDIR}/vmmon.patch"
-	eapply "${FILESDIR}/vmnet.patch" 
-	eapply "${FILESDIR}/linux6_15.patch"
-	eapply "${FILESDIR}/linux6_16.patch"
-	
+	# eapply "${FILESDIR}/vmmon.patch"
+	# eapply "${FILESDIR}/vmnet.patch" 
+	# eapply "${FILESDIR}/linux6_15.patch"
+	# eapply "${FILESDIR}/linux6_16.patch"
+
 	# decouple the kernel include dir from the running kernel version
 	sed -i \
 		-e "s%HEADER_DIR = /lib/modules/\$(VM_UNAME)/build/include%HEADER_DIR = ${KERNEL_DIR}/include%" \
