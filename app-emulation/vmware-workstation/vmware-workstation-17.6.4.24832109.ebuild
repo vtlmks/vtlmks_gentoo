@@ -16,8 +16,9 @@ UNLOCKER_VERSION="3.0.5"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead of most emulators"
 HOMEPAGE="http://www.vmware.com/products/workstation/"
+
 SRC_URI="
-	${MY_PN}-Full-${MY_PV}-${PV_BUILD}.x86_64.bundle -> https://archive.org/download/vmware-workstation-full-${MY_PV}-${PV_BUILD}.x86_64/VMware-Workstation-Full-${MY_PV}-${PV_BUILD}.x86_64.bundle
+	https://archive.org/download/vmware-workstation-full-${MY_PV}-${PV_BUILD}.x86_64/VMware-Workstation-Full-${MY_PV}-${PV_BUILD}.x86_64.bundle -> ${MY_PN}-Full-${MY_PV}-${PV_BUILD}.x86_64.bundleSRC_URI=
 	macos-guests? (
 		fetch+https://github.com/paolo-projects/unlocker/archive/${UNLOCKER_VERSION}.tar.gz -> unlocker-${UNLOCKER_VERSION}.tar.gz
 	)
@@ -32,7 +33,7 @@ KEYWORDS="~amd64"
 # running on remote systems - https://bugs.gentoo.org/604426
 IUSE="doc macos-guests +modules ovftool systemd vix"
 
-RESTRICT="mirror preserve-libs strip fetch"
+RESTRICT="mirror preserve-libs strip"
 
 RDEPEND="
 	app-arch/bzip2
@@ -80,10 +81,6 @@ QA_PREBUILT="/opt/*"
 
 QA_WX_LOAD="opt/vmware/lib/vmware/tools-upgraders/vmware-tools-upgrader-32 opt/vmware/lib/vmware/bin/vmware-vmx-stats opt/vmware/lib/vmware/bin/vmware-vmx-debug opt/vmware/lib/vmware/bin/vmware-vmx"
 # adding "opt/vmware/lib/vmware/lib/libvmware-gksu.so/libvmware-gksu.so" to QA_WX_LOAD doesn't work
-
-pkg_nofetch() {
-	einfo "${MY_PN}-Full-${MY_PV}-${PV_BUILD}.x86_64.bundle should be downloaded manually"
-}
 
 src_unpack() {
 	if has usersandbox ${FEATURES}; then
