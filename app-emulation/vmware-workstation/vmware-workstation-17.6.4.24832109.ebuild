@@ -18,7 +18,7 @@ DESCRIPTION="Emulate a complete PC without the performance overhead of most emul
 HOMEPAGE="http://www.vmware.com/products/workstation/"
 
 SRC_URI="
-	https://archive.org/download/vmware-workstation-full-${MY_PV}-${PV_BUILD}.x86_64/VMware-Workstation-Full-${MY_PV}-${PV_BUILD}.x86_64.bundle -> ${MY_PN}-Full-${MY_PV}-${PV_BUILD}.x86_64.bundleSRC_URI=
+	https://archive.org/download/vmware-workstation-full-${MY_PV}-${PV_BUILD}.x86_64/VMware-Workstation-Full-${MY_PV}-${PV_BUILD}.x86_64.bundle -> ${MY_PN}-Full-${MY_PV}-${PV_BUILD}.x86_64.bundle
 	macos-guests? (
 		fetch+https://github.com/paolo-projects/unlocker/archive/${UNLOCKER_VERSION}.tar.gz -> unlocker-${UNLOCKER_VERSION}.tar.gz
 	)
